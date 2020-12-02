@@ -12,13 +12,13 @@ function Navbar() {
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul className="navbar-nav">
-                    <li className="nav-item active">
+                    <li className="nav-item">
                         <Link href="/cart">
                         <a className="nav-link"><i className="fas fa-shopping-cart"></i> Cart </a>
                         </Link>
                     </li>
 
-                       <li className="nav-item active">
+                       <li className="nav-item">
                         <Link href="/signin">
                         <a className="nav-link"><i className="fas fa-user"></i> Sign in </a>
                         </Link>
