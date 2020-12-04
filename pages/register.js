@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/Link'
 import {useState} from 'react'
+import validate from './api/auth/validate'
 
 const Register = () => {
     const initialState = {name:'', email: '', password: '', cf_password: ''}
@@ -14,7 +15,10 @@ const Register = () => {
     
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(userData)
+        // console.log(userData)
+        const errMsg = validate(name, email, password, cf_password)
+        if(errMsg) console.log(errMsg)
+
     }
 
 
@@ -68,7 +72,7 @@ const Register = () => {
                 value ={cf_password} 
                 onChange={handleChangeInput}/>
             </div>
-            <button type="submit" className="btn btn-dark w-100" >Login</button>
+            <button type="submit" className="btn btn-dark w-100" >Register</button>
             <p className="my-2">
                 Already have an account? 
                 <Link href="/signin"><a style={{color: 'crimson'}} > Login Now</a></Link>
