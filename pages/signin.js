@@ -8,18 +8,18 @@ const SignIn = () => {
             </Head>
             <form className="mx-auto my-4" style={{maxWidth: '500px'}}>
             <div className="form-group">
-                <label htmlFor="exampleInputEmail1">Email address</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                <label htmlFor="SignInputEmail">Email address</label>
+                <input type="email" className="form-control" id="SignInputEmail" aria-describedby="emailHelp" />
                 <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div className="form-group">
-                <label htmlFor="exampleInputPassword1">Password</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" />
+                <label htmlFor="SignInputPassword">Password</label>
+                <input type="password" className="form-control" id="SignInputPassword" />
             </div>
             <button type="submit" className="btn btn-dark w-100" >Login</button>
             <p className="my-2">
                 you don't have an account? 
-                <Link href="/register"><a style={{color: 'crimson'}} > Register</a></Link>
+                <Link href="/register"><a style={{color: 'crimson'}} > Register Now </a></Link>
             </p>
             </form>
         </div>    
