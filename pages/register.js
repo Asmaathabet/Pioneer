@@ -9,8 +9,8 @@ const Register = () => {
     const [userData, setUserData] = useState(initialState)
     const {name, email, password, cf_password} = userData
 
-    // const [state, dispatch] = useContext(DataContext);
-    // console.log(state)
+    const [state, dispatch] = useContext(DataContext); // be sure from destructuring
+    console.log(state)
 
     const handleChangeInput = e => {
         const {name, value} = e.target
@@ -23,7 +23,7 @@ const Register = () => {
         const errMsg = validate(name, email, password, cf_password)
         if(errMsg) return dispatch({ type: 'NOTIFY', payload: {error: errMsg}})
 
-        dispatch({ type: 'NOTIFY', payload: {success: 'Success'}})
+        dispatch({ type: 'NOTIFY', payload: {success: 'Done'}})
     }
 
 

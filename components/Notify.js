@@ -4,12 +4,12 @@ import Loading from './Loading'
 import Toast from './Toast'
 
 const Notify = () => {
-// const [state, dispatch] = useContext(DataContext)
-// const { notify } = state
+const [state, dispatch] = useContext(DataContext)
+const { notify } = state
 
 return (
     <>
-    {/* {notify.Loading && <Loading />}
+    {notify.Loading && <Loading />}
     {notify.error && 
         <Toast 
             msg={{msg:notify.error , title: "Error"}}
@@ -18,13 +18,13 @@ return (
         />
         }
     {notify.success && 
-         <Toast 
+    <Toast 
             msg={{msg:notify.success , title: "Success"}}
             handleShow= {() => dispatch({ type: 'NOTIFY', payload: {} })}
             bgColor= "bg-success"
         />
-    } */}
-    </>
+    } 
+        </>
 )
 }
 export default Notify; 
