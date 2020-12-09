@@ -1,6 +1,6 @@
 const baseUrl = process.env.BASE_URL
 
-export default getData = async(url,token) =>{
+export const getData = async(url,token) =>{
     const res = await fetch(`${baseUrl}/api/${url}`, {
         method: 'GET',
         headers: {
@@ -11,11 +11,12 @@ export default getData = async(url,token) =>{
     return data
 }
 
-export default postData = async(url, post, token) =>{
-    const res = await fetch(`${baseUrl}/api/${url}`, {
+export const postData = async(url, post, token) =>{
+    const res = await fetch(`/api/${url}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
             'Authorization': token
         },
         body: JSON.stringify(post)
@@ -24,7 +25,7 @@ export default postData = async(url, post, token) =>{
     return data
 }
 
-export default putData = async(url, post, token) =>{
+export const putData = async(url, post, token) =>{
     const res = await fetch(`${baseUrl}/api/${url}`, {
         method: 'PUT',
         headers: {
@@ -37,7 +38,7 @@ export default putData = async(url, post, token) =>{
     return data
 }
 
-export default patchData = async(url, post, token) =>{
+export const patchData = async(url, post, token) =>{
     const res = await fetch(`${baseUrl}/api/${url}`, {
         method: 'PATCH',
         headers: {
@@ -50,7 +51,7 @@ export default patchData = async(url, post, token) =>{
     return data
 }
 
-export default deleteData = async(url, token) =>{
+export const deleteData = async(url, token) =>{
     const res = await fetch(`${baseUrl}/api/${url}`, {
         method: 'DELETE',
         headers: {

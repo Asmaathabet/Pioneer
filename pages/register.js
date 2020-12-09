@@ -3,6 +3,7 @@ import Link from 'next/Link'
 import {useState, useContext} from 'react'
 import validate from './api/auth/validate'
 import {DataContext} from '../store/GlobalState'
+import { postData } from '../database/fetchData'
 
 const Register = () => {
     const initialState = {name:'', email: '', password: '', cf_password: ''}
@@ -10,20 +11,25 @@ const Register = () => {
     const {name, email, password, cf_password} = userData
 
     const [state, dispatch] = useContext(DataContext); // be sure from destructuring
-    console.log(state)
+    // console.log(state)
 
     const handleChangeInput = e => {
         const {name, value} = e.target
         setUserData({...userData, [name]: value})
     }
     
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
         // console.log(userData)
         const errMsg = validate(name, email, password, cf_password)
         if(errMsg) return dispatch({ type: 'NOTIFY', payload: {error: errMsg}})
 
-        dispatch({ type: 'NOTIFY', payload: {success: 'Done'}})
+        dispatch({ type: 'NOTIFY', payload: {loading: true}})
+
+        console.log(userData, 1111111)
+        const res = await postData('auth/register', userData)
+        if(res.err) return dispatch({ type: 'NOTIFY', payload: {error: res.err}}) 
+        return dispatch({ type: 'NOTIFY', payload: {success: res.msg}})
     }
 
 
