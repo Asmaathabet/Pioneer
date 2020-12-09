@@ -1,13 +1,17 @@
 import Head from 'next/head'
 import Link from 'next/Link'
-import {useState} from 'react'
+import {useState, useContext} from 'react'
 import validate from './api/auth/validate'
+import {DataContext} from '../store/GlobalState'
 
 const Register = () => {
     const initialState = {name:'', email: '', password: '', cf_password: ''}
     const [userData, setUserData] = useState(initialState)
     const {name, email, password, cf_password} = userData
-    
+
+    // const [state, dispatch] = useContext(DataContext);
+    // console.log(state)
+
     const handleChangeInput = e => {
         const {name, value} = e.target
         setUserData({...userData, [name]: value})
@@ -17,8 +21,9 @@ const Register = () => {
         e.preventDefault()
         // console.log(userData)
         const errMsg = validate(name, email, password, cf_password)
-        if(errMsg) console.log(errMsg)
+        if(errMsg) return dispatch({ type: 'NOTIFY', payload: {error: errMsg}})
 
+        dispatch({ type: 'NOTIFY', payload: {success: 'Success'}})
     }
 
 

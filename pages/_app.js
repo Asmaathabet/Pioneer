@@ -1,11 +1,11 @@
 import Layout from '../components/Layout'
-import { DataProvider } from '../store/GlobalState'
+import {DataProvider} from '../store/GlobalState'
 
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <DataProvider >
+    <DataProvider>
       <Layout> 
         <Component {... pageProps} />
       </Layout>

@@ -1,6 +1,6 @@
 import {createContext, useReducer} from 'react'
 import reducers from './Reducers'
-
+ 
 export const DataContext = createContext()
 
 export const DataProvider = ({children}) => {
