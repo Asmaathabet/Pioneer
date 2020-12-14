@@ -14,6 +14,7 @@ export const getData = async(url,token) =>{
 export const postData = async(url, post, token) =>{
     const res = await fetch(`/api/${url}`, {
         method: 'POST',
+         mode: 'no-cors', // 'cors' by default
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
