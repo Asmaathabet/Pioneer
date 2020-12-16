@@ -20,13 +20,12 @@ const Register = () => {
     
     const handleSubmit = async e => {
         e.preventDefault()
-        // console.log(userData)
+
         const errMsg = validate(name, email, password, cf_password)
         if(errMsg) return dispatch({ type: 'NOTIFY', payload: {error: errMsg}})
 
         dispatch({ type: 'NOTIFY', payload: {loading: true}})
-
-        console.log(userData, 1111111)
+        
         const res = await postData('auth/register', userData)
         if(res.err) return dispatch({ type: 'NOTIFY', payload: {error: res.err}}) 
         return dispatch({ type: 'NOTIFY', payload: {success: res.msg}})

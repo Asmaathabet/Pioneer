@@ -6,10 +6,10 @@ import Toast from './Toast'
 const Notify = () => {
 const [state, dispatch] = useContext(DataContext)
 const { notify } = state
-
+//  console.log(notify.loading)
 return (
     <>
-    {notify.Loading && <Loading />}
+    {notify.loading && <Loading />}
     {notify.error && 
         <Toast 
             msg={{msg:notify.error , title: "Error"}}
