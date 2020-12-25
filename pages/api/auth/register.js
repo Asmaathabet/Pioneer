@@ -1,6 +1,6 @@
 import DBConnection from '../../../database/DBConnection'
 import Users from '../../../models/userModel'
-import validate from './validate'
+import validate from '../../../utils/validate'
 import bcrypt from 'bcrypt'
 
 DBConnection()

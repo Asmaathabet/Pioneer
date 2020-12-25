@@ -1,6 +1,7 @@
 import DBConnection from '../../../database/DBConnection'
 import Users from '../../../models/userModel'
 import bcrypt from 'bcrypt'
+import {createAccessToken, createRefreshToken} from '../../../utils/generateToken'
 
 DBConnection()
 export default async(req, res) =>{
@@ -20,6 +21,22 @@ try {
   
     const isMatch = await bcrypt.compare(password, user.password)
     if(!isMatch) return res.status(400).json({err: 'Incorrect Password.'})
+
+    const access_token = createAccessToken({id: user._id})
+    const refresh_token = createRefreshToken({id: user._id})
+
+    res.json({
+        msg : "Login Success",
+        refresh_token,
+        access_token,
+        user: {
+            name: user.name,
+            email: user.email,
+            role: user.email,
+            avatar: user.avatar,
+            root: user.root
+        }
+    })
     
     res.json({msg: "Login Succeeded "})
 }
