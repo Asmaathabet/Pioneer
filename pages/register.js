@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/Link'
 import {useState, useContext} from 'react'
-import validate from './api/auth/validate'
+import validate from '../utils/validate'
 import {DataContext} from '../store/GlobalState'
 import { postData } from '../database/fetchData'
 

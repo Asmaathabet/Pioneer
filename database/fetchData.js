@@ -1,9 +1,12 @@
 const baseUrl = process.env.BASE_URL
 
 export const getData = async(url,token) =>{
-    const res = await fetch(`${baseUrl}/api/${url}`, {
+    const res = await fetch(`/api/${url}`, {
         method: 'GET',
+        mode: 'no-cors',
         headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
             'Authorization': token
         }
     })

@@ -3,6 +3,7 @@ import Link from 'next/Link'
 import {useState, useContext} from 'react'
 import {DataContext} from '../store/GlobalState'
 import { postData } from '../database/fetchData'
+import Cookie from 'js-cookies'
 
 const SignIn = () => {
    const initialState = { email: '', password: '' }
@@ -24,7 +25,19 @@ const SignIn = () => {
         
         const res = await postData('auth/login', userData)
         if(res.err) return dispatch({ type: 'NOTIFY', payload: {error: res.err}}) 
-        return dispatch({ type: 'NOTIFY', payload: {success: res.msg}})
+        dispatch({ type: 'NOTIFY', payload: {success: res.msg}})
+        
+        dispatch({ type: 'AUTH', payload: {
+            token: res.access_token,
+            user: res.user
+        }})
+
+        Cookie.setItem('refreshtoken', res.refresh_token, {
+            path: 'api/auth/accessToken',
+            expires: 7
+        })
+
+        localStorage.setItem('firstLogin', true)
     }
 
     return (
